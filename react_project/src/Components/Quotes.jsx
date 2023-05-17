@@ -5,7 +5,7 @@ const Quotes = () => {
   const [randomQuote, setRandomQuote] = useState('');
 
   useEffect(() => {
-    I
+    
     const fetchData = () => {
       fetch('https://type.fit/api/quotes')
         .then((response) => response.json())

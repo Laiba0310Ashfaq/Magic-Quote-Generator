@@ -5,20 +5,21 @@ const UserNewQuotes = () => {
   const [quote, setQuote] = useState('');
   const [userQuotes, setUserQuotes] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setLoggedInUser(JSON.parse(storedUser));
     }
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (loggedInUser) {
       const quotes = JSON.parse(localStorage.getItem('quotes')) || [];
       setUserQuotes(quotes.filter((quote) => quote.userId === loggedInUser.email));
     }
-  }, [loggedInUser]); 
+  }, [loggedInUser]);
 
   const handleLogin = (user) => {
     setLoggedInUser(user);
@@ -42,8 +43,13 @@ const UserNewQuotes = () => {
       localStorage.setItem('quotes', JSON.stringify(quotes));
       setUserQuotes([...userQuotes, quoteData]);
       setQuote('');
+      setSearchQuery('');
     }
   };
+
+  const filteredQuotes = userQuotes.filter((quoteData) =>
+    quoteData.text.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div>
@@ -61,9 +67,15 @@ const UserNewQuotes = () => {
             <button type="submit">Submit</button>
           </form>
           <h2>Your Quotes</h2>
-          {userQuotes.length > 0 ? (
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Search quotes"
+          />
+          {filteredQuotes.length > 0 ? (
             <ul>
-              {userQuotes.map((quoteData, index) => (
+              {filteredQuotes.map((quoteData, index) => (
                 <li key={index}>{quoteData.text}</li>
               ))}
             </ul>
