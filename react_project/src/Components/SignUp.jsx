@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './SignIn.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -21,43 +23,48 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const existingUserData = JSON.parse(localStorage.getItem('userData')) || [];
-    const isEmailUnique = existingUserData.every(user => user.email !== email);
+    const isEmailUnique = existingUserData.every((user) => user.email !== email);
     if (!isEmailUnique) {
       setError('Email already exists. Please enter a new email.');
       return;
     }
+
     const newUser = {
       name,
       email,
-      password
+      password,
     };
+
     const updatedUserData = [...existingUserData, newUser];
     localStorage.setItem('userData', JSON.stringify(updatedUserData));
     setName('');
     setEmail('');
     setPassword('');
     setError('');
+    window.location.href = '/UserNewQuotes'; // Redirect to the sign-in page
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form className="form-container" onSubmit={handleSubmit}>
+      <h2>SignUp Form</h2>
+      <label className="label">
         Name:
-        <input type="text" value={name} onChange={handleNameChange} required />
+        <input className="input" type="text" value={name} onChange={handleNameChange} required />
       </label>
       <br />
-      <label>
+      <label className="label">
         Email:
-        <input type="email" value={email} onChange={handleEmailChange} required />
+        <input className="input" type="email" value={email} onChange={handleEmailChange} required />
         {error && <span className="error-message">{error}</span>}
       </label>
       <br />
-      <label>
+      <label className="label">
         Password:
-        <input type="password" value={password} onChange={handlePasswordChange} required />
+        <input className="input" type="password" value={password} onChange={handlePasswordChange} required />
       </label>
       <br />
-      <button type="submit">Sign Up</button>
+      <button className="submit-button" type="submit">Sign Up</button>
+      <p>Already a member?{<Link to="/SignIn" className="nav-item">SignIn</Link>}</p>
     </form>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SignIn from './SignIn';
+import './UserNewQuotes.css'
+import Signup from './SignUp';
 
 const UserNewQuotes = () => {
   const [quote, setQuote] = useState('');
@@ -54,9 +56,9 @@ const UserNewQuotes = () => {
   return (
     <div>
       {loggedInUser ? (
-        <div>
+        <div className="UserNewQuotes">
           <h2>Welcome, {loggedInUser.name}!</h2>
-          <button onClick={handleLogout}>Logout</button>
+          
           <h2>Enter a New Quote</h2>
           <form onSubmit={handleSubmit}>
             <textarea
@@ -82,10 +84,10 @@ const UserNewQuotes = () => {
           ) : (
             <p>No quotes to display</p>
           )}
+          <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
         <div>
-          <h2>Login to view and submit quotes</h2>
           <SignIn handleLogin={handleLogin} />
         </div>
       )}

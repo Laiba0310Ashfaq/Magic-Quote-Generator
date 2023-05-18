@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import './SignIn.css'
+import Signup from './SignUp';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const SignIn = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
@@ -24,10 +27,12 @@ const SignIn = ({ handleLogin }) => {
         setEmail('');
         setPassword('');
         handleLogin(user); 
-      } else {
+      } 
+      else {
         setError('Incorrect password. Please try again.');
       }
-    } else {
+    } 
+    else {
       setError('Email not found. Please sign up first.');
     }
   };
@@ -35,6 +40,7 @@ const SignIn = ({ handleLogin }) => {
   
   return (
     <form className="form-container" onSubmit={handleSubmit}>
+    <h2>SignIn Form</h2>
       <label className="label">
         Email:
         <input className="input" type="email" value={email} onChange={handleEmailChange} required />
@@ -46,8 +52,10 @@ const SignIn = ({ handleLogin }) => {
       </label>
       <br />
       <button className="submit-button" type="submit">Sign In</button>
-      {error && <p className="error-message">{error}</p>}
+      {error && <p className="error-message">{error}</p>} 
+      <p>Not a memeber?{<Link to="/Signup" className="nav-item">Signup</Link>}</p> 
     </form>
+    
   );
 };
 
