@@ -17,6 +17,7 @@ return (
         <Link to="/UserNewQuotes" className="nav-item">UserNewQuotes</Link>
       </nav>
       <Routes>
+        <Route path="/" element={<Quotes />} />
         <Route path="/Quotes" element={<Quotes />} />
         <Route path="/UserNewQuotes" element={<UserNewQuotes />} />
         <Route path="/Signup" element={<Signup />} />

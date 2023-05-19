@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
 import Nav from './Components/Nav';
+import Quotes from './Components/Quotes';
 
 
 ReactDOM.render(

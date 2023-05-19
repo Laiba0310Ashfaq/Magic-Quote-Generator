@@ -28,6 +28,10 @@ const Signup = () => {
       setError('Email already exists. Please enter a new email.');
       return;
     }
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters long');
+      return;
+    }
 
     const newUser = {
       name,
@@ -41,7 +45,7 @@ const Signup = () => {
     setEmail('');
     setPassword('');
     setError('');
-    window.location.href = '/UserNewQuotes'; // Redirect to the sign-in page
+    window.location.href = '/UserNewQuotes';
   };
 
   return (
@@ -55,16 +59,16 @@ const Signup = () => {
       <label className="label">
         Email:
         <input className="input" type="email" value={email} onChange={handleEmailChange} required />
-        {error && <span className="error-message">{error}</span>}
       </label>
       <br />
       <label className="label">
         Password:
         <input className="input" type="password" value={password} onChange={handlePasswordChange} required />
+        {error && <span className="error-message">{error}</span>}
       </label>
       <br />
       <button className="submit-button" type="submit">Sign Up</button>
-      <p>Already a member?{<Link to="/SignIn" className="nav-item">SignIn</Link>}</p>
+      <p>Already a member? {<Link to="/SignIn" className="nav-item">SignIn</Link>}</p>
     </form>
   );
 };
