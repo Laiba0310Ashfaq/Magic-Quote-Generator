@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './SignIn.css'
-import Signup from './SignUp';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,  Link } from 'react-router-dom';
+import '../CSS/SignIn.css'
+
 
 const SignIn = ({ handleLogin }) => {
   const [email, setEmail] = useState('');

@@ -1,11 +1,12 @@
 import React from 'react';
-import Quotes from './Quotes';
-import UserNewQuotes from './UserNewQuotes';
+
+import UserNewQuotes from '../Pages/UserNewQuotes';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './Nav.css'
+import '../CSS/Nav.css'
 import Header from './Header';
-import Signup from './SignUp';
-import SignIn from './SignIn';
+import Quotes from '../Pages/Quotes';
+import SignIn from '../Pages/SignIn';
+import Signup from '../Pages/SignUp';
 
 function Nav(){
 return (

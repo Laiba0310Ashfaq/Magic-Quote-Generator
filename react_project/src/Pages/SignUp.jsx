@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './SignIn.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import '../CSS/SignIn.css';
 
 const Signup = () => {
   const [name, setName] = useState('');
