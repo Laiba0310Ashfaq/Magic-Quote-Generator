@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import SignIn from '../Pages/SignIn';
+import SignIn from './SignIn';
 import '../CSS/UserNewQuotes.css';
 
 const UserNewQuotes = () => {
