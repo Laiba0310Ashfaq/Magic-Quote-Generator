@@ -17,6 +17,5 @@ const fetchData = () => {
     }
     return [];
   };
-  
   export { fetchData, getStoredData };
   
