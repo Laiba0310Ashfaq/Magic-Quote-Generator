@@ -45,7 +45,7 @@ const Signup = () => {
     setEmail('');
     setPassword('');
     setError('');
-    window.location.href = '/UserNewQuotes';
+    window.location.href = '/UserQuotes';
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SignIn from './SignIn';
-import '../CSS/UserNewQuotes.css';
+import '../CSS/UserQuotes.css';
 
 const UserNewQuotes = () => {
   const [quote, setQuote] = useState('');

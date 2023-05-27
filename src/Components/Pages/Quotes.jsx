@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { fetchData,getStoredData } from '../Services/fetch';
 import '../CSS/Quotes.css';
 
 const Quotes = () => {
@@ -7,30 +8,16 @@ const Quotes = () => {
   const [authorQuote, setAuthorQuote] = useState('');
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch('https://type.fit/api/quotes')
-        .then((response) => response.json())
-        .then((responseData) => {
-          localStorage.setItem('myData', JSON.stringify(responseData));
-          setData(responseData);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-        });
-    };
-
-    const storedData = localStorage.getItem('myData');
-    if (storedData) {
-      setData(JSON.parse(storedData));
-    }
-    else {
-      fetchData();
+    const storedData = getStoredData();
+    if (storedData.length > 0) {
+      setData(storedData);
+    } else {
+      fetchData().then((responseData) => setData(responseData));
     }
   }, []);
 
   useEffect(() => {
     if (data.length > 0) {
-      
       setRandomQuote(data[0].text);
       setAuthorQuote(data[0].author);
     }
