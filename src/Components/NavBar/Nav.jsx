@@ -9,6 +9,7 @@ function Nav() {
       <header>
         <h1>Magic Quote Generator</h1>
       </header>
+      
       <nav>
         <Link to="/Quotes" className="nav-item">Quotes</Link>
         <Link to="/UserQuotes" className="nav-item">User Quotes</Link>

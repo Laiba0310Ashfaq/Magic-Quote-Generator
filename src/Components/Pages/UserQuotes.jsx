@@ -52,6 +52,7 @@ const UserNewQuotes = () => {
     quoteData.text.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  
   return (
     <div>
       {loggedInUser ? (
